@@ -1,0 +1,11 @@
+INSERT INTO users (email, profile_picture, full_name, password, contact_number, experties, social_causes, occupation, personal_statement) VALUES ('email1@ggee', 'images/aqilah.jpg', 'full_name1', 'password123', '000000000', 'experties1', 'social_causes', 'occupation1', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod');
+
+INSERT INTO events (event_name, event_picture, event_day, event_date, event_time, event_description, event_venue, event_reflections) VALUES ('Project Silver Plus', 'images/ProjectSP.jpg', 'Sunday', 'Aug 18 2019', '13:00:00', 'cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non', 'Sengkang Riverside Park', '');
+
+INSERT INTO events (event_name, event_picture, event_day, event_date, event_time, event_description, event_venue, event_reflections) VALUES ('Run for Light', 'images/runFL.jpg', 'Saturday', 'Aug 7 2019', '08:00:00', 'Runfl is an initive to advocate for efforts for the blind community in Singapore', 'Marina Barrage', '');
+
+INSERT INTO events (event_name, event_picture, event_day, event_date, event_time, event_description, event_venue, event_reflections) VALUES ('Jump for Joy', 'images/jumpFJ.jpg', 'Saturday', 'Oct 7 2019', '08:00:00', 'A gathering where youths all over Singapore, come together to mentor children from underprivileged families', 'Marina Barrage', '');
+
+INSERT INTO events (event_name, event_picture, event_day, event_date, event_time, event_description, event_venue, event_reflections) VALUES ('HACK IT', 'images/hackIT.jpg', 'Saturday', 'Oct 14 2019', '09:00:00', 'Help to bring solutions to various social problems locally, as well as globally', 'National Library Pod', '');
+
+INSERT INTO events (event_name, event_picture, event_day, event_date, event_time, event_description, event_venue, event_reflections) VALUES ('Art Fest', 'images/artF.jpg', 'Sunday', 'Sep 14 2019', '10:00:00', 'Auction, see and be menserised by the skills of our children who come from various backgrounds, producing art works featuring their thoughts of the world', 'National Library Lobby', '');
