@@ -4,7 +4,7 @@ class Login extends React.Component {
     render() {
         return (
             <html>
-                <h1> Login</h1>
+                <h1> LOGIN </h1>
                     <form method="POST" action="/login">
                         <p><input type ="text" name="email" placeholder ="E-MAIL"/></p>
                         <p><input type ="text" name="password" placeholder ="PASSWORD"/></p>
@@ -14,5 +14,7 @@ class Login extends React.Component {
         )
     }
 }
+
+
 
 module.exports = Login;

@@ -12,16 +12,6 @@ CREATE TABLE IF NOT EXISTS users (
  		personal_statement TEXT
 );
 
--- CREATE TABLE IF NOT EXISTS course (
---     course_id SERIAL PRIMARY KEY,
---     course_name TEXT,
---     course_picture TEXT,
---     course_day TEXT,
---     course_date TEXT,
---     course_description TEXT,
---     course_venue
--- );
-
 CREATE TABLE IF NOT EXISTS events (
     event_id SERIAL PRIMARY KEY,
     event_name TEXT,
@@ -31,5 +21,22 @@ CREATE TABLE IF NOT EXISTS events (
     event_time TEXT,
     event_description TEXT,
     event_venue TEXT,
-    event_reflections TEXT
+    event_reflections TEXT,
+    active BOOLEAN
+);
+
+CREATE TABLE IF NOT EXISTS eventsAttendance (
+    id SERIAL PRIMARY KEY,
+    user_id INT,
+    event_id INT,
+    FOREIGN KEY (user_id) REFERENCES users (user_id),
+    FOREIGN KEY (event_id) REFERENCES events (event_id)
+);
+
+CREATE TABLE IF NOT EXISTS Queries (
+	Queries_id SERIAL PRIMARY KEY,
+	name TEXT,
+	contact_number INTEGER,
+	Query TEXT,
+	Contacted BOOLEAN DEFAULT false
 );
