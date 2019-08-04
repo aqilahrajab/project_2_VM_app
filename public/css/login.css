@@ -1,0 +1,57 @@
+/*
+body {
+ background-image: url("/images/web-background.png");*/
+/* background-color: #cccccc;
+}*/
+
+html {
+  background: url(/images/web-background.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 100px 0 0 0;
+
+}
+
+.form-content {
+	flex: center;
+  background: rgb(17,27,26, 0.4);
+  flex: center;
+  text-align: center;
+  padding: 40px;
+
+}
+
+input {
+	background: none;
+	border-color: white;
+	padding: 10px;
+	color: white;
+
+}
+
+.password {
+		-webkit-text-security: circle;
+}
+
+button {
+	background: rgb(23,86,74);
+	border: none;
+	padding: 10px 54px 10px 54px;
+	color: white;
+}
+
+
+
+.box div {
+  width: 300px;
+  height: 300px;
+
+}
