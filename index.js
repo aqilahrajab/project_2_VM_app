@@ -2,21 +2,40 @@
 const express = require('express');
 const methodOverride = require('method-override');
 const pg = require('pg');
+const url = require('url');
 
-// Initialise postgres client
-const configs = {
-  user: 'nuraqilahrajab',
-  host: '127.0.0.1',
-  database: 'vm',
-  port: 5432,
-};
+var configs;
 
-const SALT = " ";
+if( process.env.DATABASE_URL ){
+    const params = url.parse(process.env.DATABASE_URL);
+    const auth = params.auth.split(':');
+    configs = {
+        user: auth[0],
+        password: auth[1],
+        host: params.hostname,
+        port: params.port,
+        database: params.pathname.split('/')[1],
+        ssl: true
+    };
+} else{
+    // Initialise postgres client
+    configs = {
+        user: 'nuraqilahrajab',
+        host: '127.0.0.1',
+        database: 'vm',
+        port: 5432
+    };
+}
+
 const pool = new pg.Pool(configs);
 pool.on('error', function (error) {
   console.log('idle client error', err0r.message, error.stack);
 });
-const cookieParser = require('cookie-parser')
+
+const cookieParser = require('cookie-parser');
+
+const SALT = " ";
+
 // Init express app
 const app = express();
 app.use(express.json());
@@ -255,6 +274,6 @@ app.post('/event-register/:event_id', postEventRegistrationForm);
 app.get('/profile', renderProfilePage);
 
 
+const PORT = process.env.PORT || 3000;
 
-
-const server = app.listen(3000, () => console.log('~~~ Tuning in to the waves of port 3000 ~~~'));
+const server = app.listen(PORT, () => console.log('~~~ Tuning in to the waves of port '+PORT+' ~~~'));
