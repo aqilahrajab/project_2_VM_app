@@ -221,16 +221,9 @@ var renderProfilePage = (request, response) => {
             console.log(data)
             response.render('profile', data);
 
-            // const data2 = {
-            //     profilepic: result.rows[0].profile_picture,
-            //     fullname: result.rows[0].full_name
-
             }
         });
 
-
-            // console.log(data);
-            // response.render('profile', data, data2);
         }
     })
 }
@@ -259,7 +252,7 @@ app.get('/event-register/email', renderEmail);
 app.get('/event-register/failed', renderFailedReg);
 app.get('/event-register/:event_id', renderEventRegistrationForm);
 app.post('/event-register/:event_id', postEventRegistrationForm);
-app.get('/profile/:user_id', renderProfilePage);
+app.get('/profile', renderProfilePage);
 
 
 

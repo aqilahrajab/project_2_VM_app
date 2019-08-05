@@ -37,8 +37,12 @@ class main_page extends React.Component {
                 <DefaultLayout>
                     <div>
                         <h1>UPCOMING EVENTS</h1>
+                        <div className ='container'>
+                        <div className= 'row'>
                         <div className= "EventCard-container">
                            {eventsCards}
+                        </div>
+                        </div>
                         </div>
                     </div>
                 </DefaultLayout>
