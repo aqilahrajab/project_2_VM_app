@@ -1,4 +1,3 @@
-
 var React = require("react");
 var DefaultLayout = require('./layout');
 
@@ -6,13 +5,8 @@ class main_page extends React.Component {
     render() {
 
             var imageStyle = {
-                height:'200px',
-                width:'200px',
-            }
-
-            var logoStyle = {
-                height:'200px',
-                width:'200px',
+                height:'300px',
+                width:'300px',
             }
 
         console.log(this.props.events);
@@ -26,27 +20,29 @@ class main_page extends React.Component {
 
                             <img src = {events.event_picture} alt= "Event Picture" style={imageStyle}/>
                             <p className = "caption">{events.event_name}</p>
+                            <p className = "caption">{events.event_day}</p>
+                            <p className = "caption">{events.event_date}</p>
+                            <p className = "caption">{events.event_time}</p>
+                            <p className = "caption">{events.event_description}</p>
                             <a href={registerUrl} className="btn btn-secondary btn-lg active" role="button" aria-pressed="true" id={events.event_id}>REGISTER</a>
                     </div>
                 )
         })
 
         return (
-            <DefaultLayout>
-                <div>
+            <html>
+                <head>
+                <link rel="stylesheet" type="text/css" href="/css/mainpage.css"/>
+                </head>
+                <DefaultLayout>
                     <div>
-                        <img src="images/mlogo-1-black.png" alt="Company Logo" style={logoStyle}/>
-                        <p> To create a community where every youth can change the world </p>
+                        <h1>UPCOMING EVENTS</h1>
+                        <div className= "EventCard-container">
+                           {eventsCards}
+                        </div>
                     </div>
-
-
-                    <h1>UPCOMING EVENTS</h1>
-
-                    <div className="row">
-                        {eventsCards}
-                    </div>
-                </div>
-            </DefaultLayout>
+                </DefaultLayout>
+            </html>
         )
     }
 }

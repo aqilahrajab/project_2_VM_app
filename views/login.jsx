@@ -1,5 +1,5 @@
 var React = require("react");
-var bootstrapMeta = require('./bootstrap');
+var Bootstrap = require('./bootstrap');
 
 class Login extends React.Component {
     render() {
@@ -11,12 +11,8 @@ class Login extends React.Component {
 
 
         return (
-            <bootstrapMeta>
-                <html>
-                <head>
-                <link rel="stylesheet" type="text/css" href="css/login.css"/>
-                </head>
-
+            <Bootstrap>
+                <div className = "container">
                     <div className="box">
                         <div className = "form-content">
                            <img src="images/mlogo-1.png" style={logoStyle} alt="Company Logo"/>
@@ -27,9 +23,8 @@ class Login extends React.Component {
                             </form>
                         </div>
                     </div>
-
-                </html>
-            </bootstrapMeta>
+                </div>
+            </Bootstrap>
         )
     }
 }

@@ -122,13 +122,17 @@ var postLoginForm = (request, response) => {
         }
         else {
             let hashedPassword = sha256( request.body.password + SALT );
+            console.log(result.rows[0].password );
+            console.log("hashedPassword " + hashedPassword);
             if (result.rows[0].password === hashedPassword){
+            console.log(result.rows[0].password);
+
                 var user_id = result.rows[0].user_id;
                 let loggedInCookie = sha256( user_id + 'logged_id' + SALT );
                 response.cookie('email', request.body.email);
                 response.cookie('user_id', user_id);
 
-                response.redirect('/home');
+                response.redirect('/profile');
             }
             else {
                 response.send("Unable to login")
@@ -184,20 +188,49 @@ var postEventRegistrationForm = (request, response) => {
 
 
 var renderProfilePage = (request, response) => {
-    let queryString = 'SELECT * FROM users WHERE user_id=$1';
-    const id = [parseInt(request.params.user_id)];
 
-    pool.query( queryString, id, (error, result) => {
+
+    let user_id = parseInt(request.cookies.user_id);
+    console.log(user_id);
+    //const id = [parseInt(request.params.user_id)];
+    let queryString = 'SELECT * FROM users WHERE user_id=$1';
+    let values = [user_id];
+    //let queryString2 = 'SELECT * FROM eventsAttendance WHERE user_id=$1';
+
+
+    pool.query( queryString, values, (error, result) => {
 
         if (error) {
             console.log("query error", error.message);
         }
         else {
-            const data = {
-                eventId: result.rows[0].event_id
+            let queryString2 = 'SELECT eventsAttendance.user_id,eventsAttendance.event_id,events.event_name FROM eventsAttendance INNER JOIN events ON (eventsAttendance.event_id = events.event_id) WHERE eventsAttendance.user_id = $1';
+
+            pool.query( queryString2, values, (error, result2) => {
+                console.log(result2);
+
+            if (error) {
+                console.log("query error", error.message);
             }
-            console.log(data);
-            response.render('event-register', data);
+            else {
+            const data = {
+                profilepic: result.rows[0].profile_picture,
+                fullname: result.rows[0].full_name,
+                events: result2.rows
+            }
+            console.log(data)
+            response.render('profile', data);
+
+            // const data2 = {
+            //     profilepic: result.rows[0].profile_picture,
+            //     fullname: result.rows[0].full_name
+
+            }
+        });
+
+
+            // console.log(data);
+            // response.render('profile', data, data2);
         }
     })
 }
@@ -213,9 +246,6 @@ var renderFailedReg = (request, response) => {
     response.render('failed');
 } //renderFailedReg CT
 
-var renderSingleEvent = (request, response) => {
-    response.render('singleEvent');
-} //renderSingleEvent CT
 
 
 ////////////ROUTES

@@ -56,3 +56,145 @@ class VolunteerLayout extends React.Component {
 }
 
 module.exports = VolunteerLayout;
+
+
+var React = require("react");
+var DefaultLayout = require('./layout');
+
+class main_page extends React.Component {
+    render() {
+
+            var imageStyle = {
+                height:'200px',
+                width:'200px',
+            }
+
+            var logoStyle = {
+                height:'300px',
+                width:'300px',
+            }
+
+        console.log(this.props.events);
+
+        let eventsCards = this.props.events.map(events => {
+            let registerUrl = "/event-register/" + events.event_id;
+
+                return(
+
+                    <div className = "col-4">
+
+                            <img src = {events.event_picture} alt= "Event Picture" style={imageStyle}/>
+                            <p className = "caption">{events.event_name}</p>
+                            <a href={registerUrl} className="btn btn-secondary btn-lg active" role="button" aria-pressed="true" id={events.event_id}>REGISTER</a>
+                    </div>
+                )
+        })
+
+        return (
+            <DefaultLayout>
+                <div>
+                    <div>
+                        <img src="images/mlogo-1-black.png" alt="Company Logo" style={logoStyle}/>
+                        <p> To create a community where every youth can change the world </p>
+                    </div>
+
+
+                    <h1>UPCOMING EVENTS</h1>
+
+                    <div className="row">
+                        {eventsCards}
+                    </div>
+                </div>
+            </DefaultLayout>
+        )
+    }
+}
+
+
+module.exports = main_page;
+
+<Container>
+  <Row>
+    <Col>1 of 2</Col>
+    <Col>2 of 2</Col>
+  </Row>
+  <Row>
+    <Col>1 of 3</Col>
+    <Col>2 of 3</Col>
+    <Col>3 of 3</Col>
+  </Row>
+</Container>
+
+
+
+
+
+    return (<Layout>
+        <div class="mainAlbum-container">
+
+                {allAlbums}
+
+        </div>
+
+{/*            <div class="card-group">
+                {allArtist}
+            </div>*/}
+    </Layout>);
+  }
+}
+
+
+.mainAlbum-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    margin: 20px;
+
+}
+
+
+
+var React = require("react");
+var DefaultLayout = require('./layout');
+
+class Register extends React.Component {
+    render() {
+
+
+
+        return (
+            <html>
+                <head>
+                <link rel="stylesheet" type="text/css" href="/css/profile.css"/>
+                </head>
+                 <DefaultLayout>
+
+                    <div className = "container-fluid">
+                        <div className="row">
+                          <div className="col-sm-8">
+                            <img src= "/images/aqilah.jpg"/>
+
+
+                          </div>
+                          <div className="col-sm-4">
+
+                          </div>
+                          <div className="test">
+                          <img src= {this.props.profilepic}/>
+                          <img src= '/images/aqilah.jpg'/>
+
+                          </div>
+                        </div>
+                    </div>
+
+                 </DefaultLayout>
+
+            </html>
+        )
+    }
+}
+
+module.exports = Register;
+
+SELECT eventsAttendance.user_id,eventsAttendance.event_id,events.event_name FROM eventsAttendance INNER JOIN events ON (eventsAttendance.event_id = events.event_id) WHERE eventsAttendance.user_id = 9                                                                                                                                                              ;
