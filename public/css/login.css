@@ -5,7 +5,7 @@ body {
 }*/
 
 body {
-	background: url(/images/web-background.png) no-repeat center center fixed;
+	background: url(/images/wallpaper.png) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -18,6 +18,8 @@ body {
   align-items: center;
   justify-content: center;
   padding: 100px 0 0 0;
+  margin-left: 600px;
+  margin-top: 100px;
 
 }
 
@@ -31,10 +33,11 @@ body {
 }
 
 input {
-	background: none;
+	background: white;
 	border-color: white;
 	padding: 10px;
-	color: white;
+	color: black;
+	margin-top: 10px;
 
 }
 
@@ -43,10 +46,11 @@ input {
 }
 
 button {
-	background: rgb(23,86,74);
+	background: white;
+	font-weight: bold;
 	border: none;
 	padding: 10px 54px 10px 54px;
-	color: white;
+	color: black;
 }
 
 
@@ -55,4 +59,24 @@ button {
   width: 300px;
   height: 300px;
 
+}
+
+.eventnameline {
+	border-style: solid;
+  border-color: white;
+  border-width: 2px;
+  padding: 5px 20px 5px 20px;
+  list-style-type: none;
+
+
+}
+
+a {
+	color: white;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+a:hover {
+	background-color: black;
 }

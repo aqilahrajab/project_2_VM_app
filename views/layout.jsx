@@ -24,13 +24,14 @@ class VolunteerLayout extends React.Component {
 
             <body>
 
+            <div className = "fixed-top">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
 
 
                         <span className = "logo"><img src="images/mlogo-1-black.png" alt="Company Logo" style={logoStyle}/>
                                 </span>
 
-                        <a className="navbar-brand" href="#">Navbar</a>
+                        <a className="navbar-brand" href="#">M YOUTH</a>
 
 
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,24 +43,22 @@ class VolunteerLayout extends React.Component {
                             <ul className="navbar-nav">
 
                                 <li className="nav-item active">
-                                <a className="nav-link" href="#">REGISTER<span className="sr-only">(current)</span></a>
+                                <a className="nav-link" href="#">PROFILE<span className="sr-only">(current)</span></a>
                                 </li>
 
                                 <li className="nav-item">
-                                <a className="nav-link" href="#">UPCOMING EVENTS</a>
+                                <a className="nav-link" href="#">RESUME</a>
                                 </li>
 
                                 <li className="nav-item">
-                                <a className="nav-link" href="/profile">PROFILE</a>
+                                <a className="nav-link" href="/logout">LOGOUT</a>
                                 </li>
 
-                                <li className="nav-item">
-                                <a className="nav-link disabled" href="#">CONTACT US</a>
-                                </li>
 
                             </ul>
                         </div>
                 </nav>
+                </div>
 
                 <div>
                     {this.props.children}

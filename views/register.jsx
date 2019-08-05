@@ -6,6 +6,12 @@ class Register extends React.Component {
     render() {
         return (
             <html>
+            <head>
+                <link rel="stylesheet" type="text/css" href="css/register.css"/>
+            </head>
+            <div className = "container">
+            <div className = "row">
+
                 <h1> Register </h1>
                     <form method="POST" action="/register">
                         <p><input type ="text" name="email" placeholder ="E-MAIL"/></p>
@@ -20,6 +26,8 @@ class Register extends React.Component {
                         <p>Share with us your aspirations or what would like to fight for?</p>
                         <p><button type = "Submit">REGISTER</button></p>
                     </form>
+            </div>
+            </div>
             </html>
         )
     }

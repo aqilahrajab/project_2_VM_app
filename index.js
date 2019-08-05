@@ -266,6 +266,15 @@ var renderProfilePage = (request, response) => {
 
 
 
+var logout = (request, response) => {
+    console.log("clicked log out");
+        response.clearCookie('user_id');
+        response.clearCookie('loggedin');
+        response.redirect('/login');
+}
+
+
+
 var renderEmail = (request, response) => {
     response.render('email');
 } //renderEmail CT
@@ -288,6 +297,8 @@ app.get('/event-register/failed', renderFailedReg);
 app.get('/event-register/:event_id', renderEventRegistrationForm);
 app.post('/event-register/:event_id', postEventRegistrationForm);
 app.get('/profile', renderProfilePage);
+app.post('/logout', logout);
+app.get('/logout', renderLoginForm);
 
 
 const PORT = process.env.PORT || 3000;

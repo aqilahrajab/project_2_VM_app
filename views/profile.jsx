@@ -1,7 +1,7 @@
 var React = require("react");
-var DefaultLayout = require('./meta');
+var DefaultLayout = require('./layout');
 
-class Register extends React.Component {
+class Profile extends React.Component {
     render() {
 
             var logoStyle = {
@@ -11,8 +11,8 @@ class Register extends React.Component {
             }
 
             var imageStyle = {
-                height: '230px',
-                width: '230px'
+                height: '200px',
+                width: '200px'
             }
 
         // console.log(this.props.events);
@@ -22,7 +22,7 @@ class Register extends React.Component {
             // console.log(profileUrl);
 
                 return(
-                     <li>{events.event_name}</li>
+                     <li className="eventnameline">{events.event_name} |  {events.event_date} | {events.event_time}</li>
                 )
         })
 
@@ -31,15 +31,26 @@ class Register extends React.Component {
 
                 return(
 
-                    <div className = "col-4">
 
-                            <img src = {events.event_picture} alt= "Event Picture" style={imageStyle}/>
-                            <p className = "caption">{events.event_name}</p>
-                            <p className = "caption">{events.event_day}</p>
-                            <p className = "caption">{events.event_date}</p>
-                            <p className = "caption">{events.event_time}</p>
+                    <div className = "event">
+                    <div className = "row">
+
+                        <div className = "col-5">
+
+                                <img src = {events.event_picture} alt= "Event Picture" style={imageStyle}/>
+                        </div>
+
+                        <div className = "col-6">
+
+                            <p className = "caption2">{events.event_name}</p>
+                            <p className = "caption">{events.event_day}  |  {events.event_date}  |  {events.event_time}</p>
                             <p className = "caption">{events.event_description}</p>
                             <a href={registerUrl} className="btn btn-secondary btn-lg active" role="button" aria-pressed="true" id={events.event_id}>REGISTER</a>
+
+                        </div>
+
+
+                    </div>
                     </div>
                 )
         })
@@ -56,22 +67,24 @@ class Register extends React.Component {
 
                     <div className = "container-fluid d-flex flex-column">
                         <div className="row">
-                          <div className="col-sm-8">
+                              <div className="col-sm-8">
 
-                          {eventsCards}
+                              {eventsCards}
 
-                          </div>
-                          <div className="col-sm-4 d-flex flex-column">
-                            <img src= {this.props.profilepic} style={imageStyle} className = 'center'/>
-                            <p id="profile"> {this.props.fullname} </p>
-                            <p id="eventHeader">REGISTERED EVENTS</p>
-                             <div className= "registeredEvents">
-                                <ul>
-                                    {eventsList}
-                                </ul>
-                             </div>
+                              </div>
 
-                          </div>
+                              <div className= "position-fixed">
+                              <div className="col-sm-12 d-flex flex-column" >
+                                    <img src= {this.props.profilepic} style={imageStyle} className = 'center'/>
+                                    <p id="profile"> {this.props.fullname} </p>
+                                    <p id="eventHeader">REGISTERED EVENTS</p>
+                                     <div className= "registeredEvents">
+                                        <ul>
+                                            {eventsList}
+                                        </ul>
+                                    </div>
+                              </div>
+                              </div>
 
                         </div>
                     </div>
@@ -83,4 +96,4 @@ class Register extends React.Component {
     }
 }
 
-module.exports = Register;
+module.exports = Profile;
