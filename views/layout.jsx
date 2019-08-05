@@ -43,7 +43,7 @@ class VolunteerLayout extends React.Component {
                             <ul className="navbar-nav">
 
                                 <li className="nav-item active">
-                                <a className="nav-link" href="#">PROFILE<span className="sr-only">(current)</span></a>
+                                <a className="nav-link" href="/profile">PROFILE<span className="sr-only">(current)</span></a>
                                 </li>
 
                                 <li className="nav-item">

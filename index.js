@@ -118,7 +118,7 @@ var postRegisterForm = (request, response) => {
                         response.cookie('email', request.body.email);
                         response.cookie('loggedIn', loggedInCookie);
                         response.cookie('user_id', user_id);
-                        response.redirect('/home');
+                        response.redirect('/login');
                     }//else3 CT
                 }) //pool.query CT
             }//else2 CT
@@ -262,8 +262,6 @@ var renderProfilePage = (request, response) => {
     }//else1 CT
   })//queryString1 CT
 }//renderct
-
-
 
 
 var logout = (request, response) => {
