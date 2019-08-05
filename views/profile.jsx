@@ -15,14 +15,32 @@ class Register extends React.Component {
                 width: '230px'
             }
 
-        console.log(this.props.events);
+        // console.log(this.props.events);
 
         let eventsList = this.props.events.map(events => {
             let profileUrl = "/profile/" + events.user_id;
-            console.log(profileUrl);
+            // console.log(profileUrl);
 
                 return(
                      <li>{events.event_name}</li>
+                )
+        })
+
+        let eventsCards = this.props.eventsList.map(events => {
+            let registerUrl = "/event-register/" + events.event_id;
+
+                return(
+
+                    <div className = "col-4">
+
+                            <img src = {events.event_picture} alt= "Event Picture" style={imageStyle}/>
+                            <p className = "caption">{events.event_name}</p>
+                            <p className = "caption">{events.event_day}</p>
+                            <p className = "caption">{events.event_date}</p>
+                            <p className = "caption">{events.event_time}</p>
+                            <p className = "caption">{events.event_description}</p>
+                            <a href={registerUrl} className="btn btn-secondary btn-lg active" role="button" aria-pressed="true" id={events.event_id}>REGISTER</a>
+                    </div>
                 )
         })
 
@@ -40,6 +58,7 @@ class Register extends React.Component {
                         <div className="row">
                           <div className="col-sm-8">
 
+                          {eventsCards}
 
                           </div>
                           <div className="col-sm-4 d-flex flex-column">

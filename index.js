@@ -214,38 +214,54 @@ var renderProfilePage = (request, response) => {
     //const id = [parseInt(request.params.user_id)];
     let queryString = 'SELECT * FROM users WHERE user_id=$1';
     let values = [user_id];
+    console.log(user_id);
     //let queryString2 = 'SELECT * FROM eventsAttendance WHERE user_id=$1';
 
 
     pool.query( queryString, values, (error, result) => {
 
         if (error) {
-            console.log("query error", error.message);
-        }
+            console.log("query error 1", error.message);
+        }//if1 CT
         else {
-            let queryString2 = 'SELECT eventsAttendance.user_id,eventsAttendance.event_id,events.event_name FROM eventsAttendance INNER JOIN events ON (eventsAttendance.event_id = events.event_id) WHERE eventsAttendance.user_id = $1';
+            let queryString2 = 'SELECT eventsAttendance.user_id,eventsAttendance.event_id,events.event_name, events.event_day, events.event_date, events.event_time, events.event_picture FROM eventsAttendance INNER JOIN events ON (eventsAttendance.event_id = events.event_id) WHERE eventsAttendance.user_id = $1';
+            console.log(queryString2);
 
             pool.query( queryString2, values, (error, result2) => {
-                console.log(result2);
+                // console.log(result2);
+                // console.log(values);
 
             if (error) {
-                console.log("query error", error.message);
+                console.log("query error 2", error.message);
             }
             else {
-            const data = {
-                profilepic: result.rows[0].profile_picture,
-                fullname: result.rows[0].full_name,
-                events: result2.rows
-            }
-            console.log(data)
-            response.render('profile', data);
+                let queryString3 = "SELECT * FROM events";
+                pool.query(queryString3, (error, result3) => {
 
-            }
-        });
+                    if(error) {
+                        console.error('query error 3:', error.stack);
+                        response.send( 'query error' );
+                    }//if CT
 
-        }
-    })
-}
+                    else {
+
+                        const data = {
+                            profilepic: result.rows[0].profile_picture,
+                            fullname: result.rows[0].full_name,
+                            events: result2.rows,
+                            eventsList : result3.rows,
+                            cookies: request.cookies
+                        }
+                        console.log("events", data.eventslist)
+                        response.render('profile', data);
+
+                         }//else3 CT
+                 });//querystring3 CT
+            }//else2 CT
+        })//querystring2 CT
+    }//else1 CT
+  })//queryString1 CT
+}//renderct
 
 
 
