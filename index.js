@@ -264,13 +264,13 @@ var renderProfilePage = (request, response) => {
 }//renderct
 
 
+
 var logout = (request, response) => {
     console.log("clicked log out");
         response.clearCookie('user_id');
         response.clearCookie('loggedin');
         response.redirect('/login');
-}
-
+}//logout CT
 
 
 var renderEmail = (request, response) => {
@@ -280,8 +280,6 @@ var renderEmail = (request, response) => {
 var renderFailedReg = (request, response) => {
     response.render('failed');
 } //renderFailedReg CT
-
-
 
 ////////////ROUTES
 app.get('/test', testroute);
